@@ -16,3 +16,28 @@
 
 --How much have these customers spent? (Use code from the previous query to
 -- make a subquery or a CTE to solve this one.) 
+
+
+
+
+--Question 1
+SELECT title, film_id, length
+FROM film
+WHERE length = (SELECT MAX(length) FROM film);
+
+
+
+-- Question 2
+SELECT title, film_id, replacement_cost
+FROM film
+WHERE replacement_cost = (SELECT MIN(replacement_cost) FROM film);
+
+--Question 3
+SELECT title, film_id
+FROM film
+WHERE replacement_cost = (SELECT MAX(rental_rate) FROM film);
+
+--Question 4
+SELECT payment_id, amount, payment_date
+FROM payment
+WHERE payment_date >= '2007-05-01';
